@@ -17,13 +17,22 @@ public:
   bool after(const Version &other) {
     for (unsigned long i = 0;
          i < std::min(other.parts.size(), this->parts.size()); i++) {
-      const auto &thisPart = this->parts[i];
-      const auto &otherPart = other.parts[i];
-      if (thisPart > otherPart) {
-        return true;
-      }
-      if (thisPart < otherPart) {
-        return false;
+      try {
+        const auto thisPart = std::stoi(this->parts[i]);
+        const auto otherPart = std::stoi(other.parts[i]);
+        if (thisPart > otherPart) {
+          return true;
+        }
+        if (thisPart < otherPart) {
+          return false;
+        }
+      } catch (const std::invalid_argument &) {
+        if (this->parts[i] > other.parts[i]) {
+          return true;
+        }
+        if (this->parts[i] < other.parts[i]) {
+          return false;
+        }
       }
     }
     if (this->parts.size() > other.parts.size() && this->parts.back() == "0") {
