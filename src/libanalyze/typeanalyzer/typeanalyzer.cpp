@@ -172,6 +172,7 @@ static const std::set<std::string> PURE_METHODS /* NOLINT */ = {
     "dict.get",
     "dict.has_key",
     "dict.keys",
+    "dict.values",
     "int.even",
     "int.is_odd",
     "int.to_string",

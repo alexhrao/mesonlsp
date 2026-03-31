@@ -230,6 +230,8 @@ Returns the value for the key given as first argument if it is present in the di
 Returns true if the dictionary contains the key given as argument, false otherwise.
 @dict::keys:
 Returns an array of keys in the dictionary.
+@dict::values:
+Returns an array of values in the dictionary, sorted by the corresponding keys in ascending order.
 @disabler::found:
 Always returns `false`
 @dlang_module::generate_dub_file:
@@ -406,10 +408,14 @@ This function loads a file consisting of a series of `key=value` lines and retur
 Kconfig frontends typically use ".config" as the default name for the configuration file. However, placing the configuration file in the source directory limits the user to one configuration per source directory. To allow separate configurations for each build directory, following the Meson standard, `meson.build` should not hardcode ".config" as the argument to `kconfig.load()`. Instead, it should make the argument to `kconfig.load()` a project build option.
 @list::contains:
 Returns true if the array contains the object given as argument, false otherwise
+@list::flatten:
+Returns a flattened copy of the array, with all nested arrays removed.
 @list::get:
 Returns the object at the given index, negative indices count from the back of the array, indexing out of bounds returns the `fallback` value (since 0.38.0) or, if it is not specified, causes a fatal error
 @list::length:
 Returns the current size of the array / list.
+@list::slice:
+Return a selection of the elements of the array starting at index `start` and continuing with `step` size jumps until `stop`. Negative indices count from the back of the array. The step size cannot be zero, but may be negative. If it is negative, `start` and `stop` default to the end and beginning of the array, respectively. If `step` is positive, `start` defaults to 0 and `stop` defaults to the length of the array. Either both or none of `start` and `stop` must be provided to prevent ambiguity.
 @meson::add_devenv:
 Add an `env` object (returned by `environment()`) to the list of environments that will be applied when using the `meson devenv` command line.
 

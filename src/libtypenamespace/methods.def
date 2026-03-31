@@ -1430,6 +1430,10 @@ dict::keys:
   - args:
   - returns:
     - list(str)
+dict::values:
+  - args:
+  - returns:
+    - list(any)
 disabler::found:
   - args:
   - returns:
@@ -3009,6 +3013,10 @@ list::contains:
         - any
   - returns:
     - bool
+list::flatten:
+  - args:
+  - returns:
+    - list(any)
 list::get:
   - args:
     - index:
@@ -3029,6 +3037,24 @@ list::length:
   - args:
   - returns:
     - int
+list::slice
+  - args:
+    - start:
+      - Optional: true
+      - Varargs: false
+      - Types:
+        - int
+    - end:
+      - Optional: true
+      - Varargs: false
+      - Types:
+        - int
+    - @step:
+      - Optional: true
+      - Types:
+        - int
+  - returns:
+    - list(any)
 meson::add_devenv:
   - args:
     - env:
@@ -5122,7 +5148,7 @@ str::version_compare:
   - args:
     - compare_string:
       - Optional: false
-      - Varargs: false
+      - Varargs: true
       - Types:
         - str
   - returns:
